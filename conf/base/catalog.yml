@@ -1,0 +1,69 @@
+geneticValues:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/alzheimerGeneticValuesSmall.csv
+  load_args:
+    header: 0
+    index_col: 0
+
+    
+phenotipicValues:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/phenotypes.csv
+
+
+
+X_train:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/X_train.csv
+  
+y_train:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/y_train.csv
+
+X_test:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/X_test.csv
+  
+y_test:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/y_test.csv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+model_results:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/model_results.csv
+
+rf_model: # simple example without compression
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/rf_model.pkl
+  backend: pickle
+  
+lr_model: # simple example without compression
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/lr_model.pkl
+  backend: pickle
+
+xgb_model: # simple example without compression
+  type: pickle.PickleDataset
+  filepath: data/07_model_output/xgb_model.pkl
+  backend: pickle
+
+metrics:
+  type: tracking.MetricsDataset
+  filepath: data/09_tracking/metrics.json
+
+companies_columns:
+  type: tracking.JSONDataset
+  filepath: data/09_tracking/companies_columns.json

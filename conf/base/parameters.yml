@@ -1,0 +1,26 @@
+split:
+  test_size: 0.2
+  random_state: 42
+
+
+
+
+models:
+  random_forest:
+    name: 
+      "random_forest"
+    search_space:
+      n_estimators: [100, 200, 300]
+      max_depth: [5, 10, 15, None]
+  logistic_regression:
+    name:
+      "logistic_regression"
+    search_space:
+      C: [0.1, 1, 10]
+      max_iter: [100, 200, 300]
+  xgboost:
+    name:
+      "xgboost"
+    search_space:
+      n_estimators: [50, 100, 150]
+      learning_rate: [0.01, 0.1, 0.2]
