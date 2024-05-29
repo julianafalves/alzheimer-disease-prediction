@@ -1,99 +1,59 @@
-# alzheimers Prediction
+# Alzheimer's Disease Prediction Using Kedro
 
 ## Overview
+This project uses the Kedro framework to build and manage a data pipeline for predicting Alzheimer's disease using machine learning models. We utilize Random Forest, Logistic Regression, and Support Vector Machine (SVM) algorithms to analyze and predict based on patient data. The primary goal of this project is to demonstrate how Kedro can be used to streamline the process of building predictive models and to facilitate their transition into production environments.
 
-This is your new Kedro project with Kedro-Viz setup, which was generated using `kedro 0.19.5`.
+## Project Structure
+The project follows the standard Kedro project structure:
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+- `conf/`: Configuration files for datasets, model parameters, and the environment.
+- `data/`: Data used by the project, which Kedro handles according to the definitions in `catalog.yml`.
+- `notebooks/`: Jupyter notebooks for exploratory data analysis and experimentation.
+- `src/`: Source code for the project including the pipeline definitions and nodes.
+    - `pipelines/`: Modular pipelines for data preprocessing, feature engineering, and model training.
+    - `nodes/`: Individual tasks (nodes) that are combined into pipelines.
+- `tests/`: Tests for the project's codebase.
 
-## Rules and guidelines
-
-In order to get the best out of the template:
-
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://docs.kedro.org/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
-
-## How to install dependencies
-
-Declare any dependencies in `requirements.txt` for `pip` installation.
-
-To install them, run:
-
-```
-pip install -r requirements.txt
+## Installation
+To get started with this project, clone the repository and set up the environment:
+```bash
+git clone https://your-repository-url.git
+cd your-project-directory
+kedro install
 ```
 
-## How to run your Kedro pipeline
 
-You can run your Kedro project with:
+## Running the Project
+To run the full pipeline with Kedro:
 
-```
-kedro run
-```
-
-## How to test your Kedro project
-
-Have a look at the files `src/tests/test_run.py` and `src/tests/pipelines/data_science/test_pipeline.py` for instructions on how to write your tests. Run the tests as follows:
-
-```
-pytest
+```bash
+kedro run 
 ```
 
-To configure the coverage threshold, look at the `.coveragerc` file.
+You can also run specific pipelines or only parts of the data pipeline if needed:
 
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. Install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `catalog`, `context`, `pipelines` and `session`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
+```bash
+kedro run --pipeline data_processing
+kedro run --pipeline training
 ```
 
-After installing Jupyter, you can start a local notebook server:
+## Using the Machine Learning Models
+The project uses three different models to predict Alzheimer's disease:
 
-```
-kedro jupyter notebook
-```
+**Random Forest:** Used for its robustness and effectiveness in handling tabular data.
+**Logistic Regression:** Provides a probabilistic approach suitable for binary classification.
+**SVM:** Offers advantages in high-dimensional spaces and is effective in cases where the margin of separation is important.
+Model configurations and parameters can be adjusted in parameters.yml.
 
-### JupyterLab
-To use JupyterLab, you need to install it:
+## Contributing
+Contributions to this project are welcome. Please follow the standard Git workflow:
 
-```
-pip install jupyterlab
-```
+Fork the repository.
+Create your feature branch (git checkout -b feature/AmazingFeature).
+Commit your changes (git commit -m 'Add some AmazingFeature').
+Push to the branch (git push origin feature/AmazingFeature).
+Open a pull request.
 
-You can also start JupyterLab:
+## Contact
+For any further questions or partnership inquiries, please contact me at contact.julianafalves@gmail.com.
 
-```
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
-
-[Further information about using notebooks for experiments within Kedro projects](https://docs.kedro.org/en/develop/notebooks_and_ipython/kedro_and_notebooks.html).
-## Package your Kedro project
-
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html).
